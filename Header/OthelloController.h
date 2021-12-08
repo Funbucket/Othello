@@ -3,7 +3,7 @@
 class OthelloController {
 public:
     static OthelloController* GetInstance();
-    void playOthello();
+    void PlayOthello();
 private:
     OthelloController();
     static OthelloController* instance_;

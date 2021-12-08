@@ -2,6 +2,6 @@
 
 int main() {
     OthelloController* controller = OthelloController::GetInstance();
-    controller->playOthello();
+    controller->PlayOthello();
     return 0;
 }
