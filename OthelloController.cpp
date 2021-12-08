@@ -1,9 +1,6 @@
 #include <iostream>
 #include "./Header/OthelloController.h"
 #include "./Header/OthelloBoard.h"
-#include "./Header/Black.h"
-#include "./Header/White.h"
-#include "./Header/Player.h"
 
 OthelloController* OthelloController::instance_ = nullptr;
 

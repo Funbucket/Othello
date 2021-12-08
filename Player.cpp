@@ -1,7 +1,8 @@
-#include <iostream>
+#include <string>
 #include "./Header/Player.h"
-#include "./Header/OthelloBoard.h"
 
-Player::Player() {}
+Player::Player(std::string name) : name_(name){}
+
+const std::string Player::name() {return name_; }
 
 Player::~Player() {}

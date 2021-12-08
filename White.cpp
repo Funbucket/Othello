@@ -1,11 +1,10 @@
 #include <string>
 #include <vector>
-#include <iostream>
 #include "./Header/White.h"
 #include "./Header/OthelloBoard.h"
 
 White::White(std::string name, int size) :
-        name_(name), color_("W") {}
+        Player(name), color_("W") {}
 
 std::vector<std::vector<int>> White::status() { return status_; }
 
@@ -84,7 +83,5 @@ bool White::Move(int x, int y) {
 }
 
 const std::string White::color() { return color_; }
-
-const std::string White::name() { return name_; }
 
 White::~White() {}

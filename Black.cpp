@@ -1,11 +1,10 @@
 #include <string>
 #include <vector>
-#include <iostream>
 #include "./Header/Black.h"
 #include "./Header/OthelloBoard.h"
 
 Black::Black(std::string name, int size) :
-        name_(name), color_("B") {}
+        Player(name), color_("B") {}
 
 std::vector<std::vector<int>> Black::status() { return status_; }
 
@@ -83,7 +82,5 @@ bool Black::Move(int x, int y) {
 }
 
 const std::string Black::color() { return color_; }
-
-const std::string Black::name() { return name_; }
 
 Black::~Black() {}
