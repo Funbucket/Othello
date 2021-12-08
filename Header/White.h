@@ -6,7 +6,7 @@
 
 class White : public Player {
 public:
-    White(std::string name, int size);
+    White(std::string name);
     std::vector<std::vector<int>> status() override;
     void PushStatus(std::vector<int> position) override;
     std::vector<std::vector<int>> ValidPosition() override;

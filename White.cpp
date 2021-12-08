@@ -3,7 +3,7 @@
 #include "./Header/White.h"
 #include "./Header/OthelloBoard.h"
 
-White::White(std::string name, int size) :
+White::White(std::string name) :
         Player(name), color_("W") {}
 
 std::vector<std::vector<int>> White::status() { return status_; }

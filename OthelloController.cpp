@@ -27,8 +27,8 @@ void OthelloController::playOthello() {
 
     std::cout << "[ Game Start! ]" << std::endl;
 
-    Player* black_player = new Black("Player_Black", size);
-    Player* white_player = new White("Player_White", size);
+    Player* black_player = new Black("Player_Black");
+    Player* white_player = new White("Player_White");
     Black* black = dynamic_cast<Black*>(black_player);
     White* white = dynamic_cast<White*>(white_player);
 

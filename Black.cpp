@@ -3,7 +3,7 @@
 #include "./Header/Black.h"
 #include "./Header/OthelloBoard.h"
 
-Black::Black(std::string name, int size) :
+Black::Black(std::string name) :
         Player(name), color_("B") {}
 
 std::vector<std::vector<int>> Black::status() { return status_; }
