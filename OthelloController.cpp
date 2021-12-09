@@ -1,6 +1,8 @@
 #include <iostream>
 #include "./Header/OthelloController.h"
 #include "./Header/OthelloBoard.h"
+#include "./Header/Black.h"
+#include "./Header/White.h"
 
 OthelloController* OthelloController::instance_ = nullptr;
 
@@ -27,8 +29,8 @@ void OthelloController::PlayOthello() {
 
     std::cout << "[ Game Start! ]" << std::endl;
 
-    Black black("Player_Black");
-    White white("Player_White");
+    Player* black = new Black("Player_Black");
+    Player* white = new White("Player_White");
 
     OthelloBoard* othello_board = OthelloBoard::GetInstance();
     othello_board->SetSize(size);
@@ -37,12 +39,12 @@ void OthelloController::PlayOthello() {
 
     while (1) {
         //오델로 보드 갱신
-        othello_board->CreateBoard(&black, &white);
+        othello_board->CreateBoard(black, white);
 
         // 돌을 놓을 곳이 없다면 턴 넘기기
         if(othello_board->GetPushed() == false) {
             std::cout << "[ There are no available positions! ]" << std::endl;
-            othello_board->CreateBoard(&black, &white);
+            othello_board->CreateBoard(black, white);
             // 둘다 돌을 놓을 수 없다면 게임 종료
             if (othello_board->GetPushed() == false) {
                 break;
@@ -51,10 +53,10 @@ void OthelloController::PlayOthello() {
 
         // 돌을 놓을 좌표 입력
         if (othello_board->CurrentPlayer() == "B") {
-            std::cout << black.name() << "'s turn!" << std::endl
+            std::cout << black->name() << "'s turn!" << std::endl
                       << "Enter position ( ";
 
-            for (std::vector<int> position : black.ValidPosition()) {
+            for (std::vector<int> position : black->ValidPosition()) {
                 std::cout << "<" << static_cast<char> (position[0] + 65) << " "
                           << position[1] + 1 << "> ";
             }
@@ -63,16 +65,16 @@ void OthelloController::PlayOthello() {
             std::cin >> x;
             std::cin >> y;
 
-            while (!black.Move(toupper(x) - 65, y - 1)) {
+            while (!black->Move(toupper(x) - 65, y - 1)) {
                 std::cout << "Enter position again! : ";
                 std::cin >> x;
                 std::cin >> y;
             }
         } else {
-            std::cout << white.name() << "'s turn!" << std::endl
+            std::cout << white->name() << "'s turn!" << std::endl
                       << "Enter position ( ";
 
-            for (std::vector<int> position : white.ValidPosition()) {
+            for (std::vector<int> position : white->ValidPosition()) {
                 std::cout << "<" << static_cast<char> (position[0] + 65) << " "
                           << position[1] + 1 << "> ";
             }
@@ -81,7 +83,7 @@ void OthelloController::PlayOthello() {
             std::cin >> x;
             std::cin >> y;
 
-            while (!white.Move(toupper(x) - 65, y - 1)) {
+            while (!white->Move(toupper(x) - 65, y - 1)) {
                 std::cout << "Enter position again! : ";
                 std::cin >> x;
                 std::cin >> y;
@@ -102,13 +104,13 @@ void OthelloController::PlayOthello() {
             }
         }
     }
-    std::cout << black.name() << "'s score: " << count_black << std::endl;
-    std::cout << white.name() << "'s score: " << count_white << std::endl;
+    std::cout << black->name() << "'s score: " << count_black << std::endl;
+    std::cout << white->name() << "'s score: " << count_white << std::endl;
     if (count_white > count_black) {
-        std::cout << white.name() << " is winner!!" << std::endl;
+        std::cout << white->name() << " is winner!!" << std::endl;
     } else if (count_white == count_black) {
         std::cout << "Draw!!";
     } else {
-        std::cout << black.name() << " is winner!!" << std::endl;
+        std::cout << black->name() << " is winner!!" << std::endl;
     }
 }

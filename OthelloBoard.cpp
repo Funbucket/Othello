@@ -39,7 +39,7 @@ void OthelloBoard::SetSize(int size) {
     othello_board_[i][i].Change("W");
 }
 
-void OthelloBoard::CreateBoard(Black* black, White* white) {
+void OthelloBoard::CreateBoard(Player* black, Player* white) {
     // 현재 플레이어 변경
     if (current_player_ == "None") {
         current_player_ = "B";
@@ -132,7 +132,7 @@ void OthelloBoard::CreateBoard(Black* black, White* white) {
 
 }
 
-std::vector<std::vector<int>> OthelloBoard::ValidMove(Black* black, White* white) {
+std::vector<std::vector<int>> OthelloBoard::ValidMove(Player* black, Player* white) {
     std::vector<int> dx = {-1, -1, -1, 0, 0, 1, 1, 1};
     std::vector<int> dy = {-1, 0, 1, -1, 1, -1, 0, 1};
     std::string cur_color;

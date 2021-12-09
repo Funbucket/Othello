@@ -3,8 +3,7 @@
 #include <string>
 #include <vector>
 #include "Cell.h"
-#include "Black.h"
-#include "White.h"
+#include "Player.h"
 
 class OthelloBoard {
 public:
@@ -12,8 +11,8 @@ public:
     OthelloBoard(OthelloBoard &other) = delete;
     void operator=(const OthelloBoard &) = delete;
 
-    void CreateBoard(Black* black, White* white);
-    std::vector<std::vector<int>> ValidMove(Black* black, White* white);
+    void CreateBoard(Player* black, Player* white);
+    std::vector<std::vector<int>> ValidMove(Player* black, Player* white);
     void SetSize(int size);
     static OthelloBoard* GetInstance();
     int size();
