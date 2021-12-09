@@ -8,6 +8,10 @@
 
 class OthelloBoard {
 public:
+    // Delete possible copy approaches
+    OthelloBoard(OthelloBoard &other) = delete;
+    void operator=(const OthelloBoard &) = delete;
+
     void CreateBoard(Black* black, White* white);
     std::vector<std::vector<int>> ValidMove(Black* black, White* white);
     void SetSize(int size);
