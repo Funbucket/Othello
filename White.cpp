@@ -41,19 +41,23 @@ bool White::Move(int x, int y) {
         int count = 0;
 
         // 조건 1 : 벽을 만나지 않는 범위에서 반복
-        while ((nx + dx[i]) != -1 && (ny + dy[i]) != -1
+        while ( (nx + dx[i]) != -1 && (ny + dy[i]) != -1
                && (nx + dx[i]) != othello_board->size()
-               && (ny + dy[i]) != othello_board->size()) {
+               && (ny + dy[i]) != othello_board->size() ) {
             nx = nx + dx[i];
             ny = ny + dy[i];
 
+            std::string cur_color = othello_board->GetBoard()[nx][ny].color();
+
+            if ( cur_color == "empty" || cur_color == "#" ) break;
+
             // 조건 2 : 다른 색깔 만나고 벡터에 추가
-            if (othello_board->GetBoard()[nx][ny].color() == "B") {
+            if ( cur_color == "B" ) {
                 count++;
                 is_diff = true;
-            } else if (othello_board->GetBoard()[nx][ny].color() == color_) {
+            } else if ( cur_color == color_ ) {
                 // 조건 2를 만족하지 않고 바로 같은 색깔을 만나면 조건 불만족, 반복 종료
-                if (is_diff == false) {
+                if ( is_diff == false ) {
                     break;
                 } else {
                     // 조건 3 : 다른 색깔 후 같은 색깔 만나면 조건 만족, 반복 종료
@@ -62,8 +66,8 @@ bool White::Move(int x, int y) {
                 }
             }
         }
-        if (is_diff && is_same) {
-            for (int j=0; j < (count); j++) {
+        if ( is_diff && is_same ) {
+            for ( int j=0; j < (count); j++ ) {
                 nx = nx - dx[i];
                 ny = ny - dy[i];
                 target_position.push_back({nx, ny});
